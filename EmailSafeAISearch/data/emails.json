@@ -1,0 +1,386 @@
+[
+  {
+    "id": 1,
+    "thread": "march-order",
+    "raw_email": "From: priya.shah@example.com\nTo: mark.lopez@example.com\nSubject: Delivery date for the March order\n\nHi Mark,\n\nCan you confirm the delivery date for order INV-20391? The client wants it before March 15.\n\nThanks,\nPriya Shah\n(408) 555-0142",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "PERSON", "value": "Mark" },
+      { "type": "PERSON", "value": "Priya Shah" },
+      { "type": "PHONE_NUMBER", "value": "(408) 555-0142" }
+    ],
+    "not_pii": ["INV-20391", "March 15"]
+  },
+  {
+    "id": 2,
+    "thread": "march-order",
+    "raw_email": "From: mark.lopez@example.com\nTo: priya.shah@example.com\nSubject: RE: Delivery date for the March order\n\nPriya,\n\nI checked with Northwind Supplies. Tom Becker says they can deliver by March 12. If anything changes, call me at 408-555-0177.\n\nMark Lopez",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "PERSON", "value": "Priya" },
+      { "type": "PERSON", "value": "Tom Becker" },
+      { "type": "PHONE_NUMBER", "value": "408-555-0177" },
+      { "type": "PERSON", "value": "Mark Lopez" }
+    ],
+    "not_pii": ["Northwind Supplies", "March 12"]
+  },
+  {
+    "id": 3,
+    "thread": "march-order",
+    "raw_email": "From: tom.becker@northwind.example.com\nTo: mark.lopez@example.com\nSubject: Order INV-20391 shipping\n\nHi Mark,\n\nConfirming order INV-20391 ships on March 10 and arrives March 12. Truck driver contact: Luis Ortega, +1 650 555 0133.\n\nRegards,\nTom Becker\nAccount Manager, Northwind Supplies",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "tom.becker@northwind.example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "PERSON", "value": "Mark" },
+      { "type": "PERSON", "value": "Luis Ortega" },
+      { "type": "PHONE_NUMBER", "value": "+1 650 555 0133" },
+      { "type": "PERSON", "value": "Tom Becker" }
+    ],
+    "not_pii": ["INV-20391", "March 10", "March 12", "Northwind Supplies"]
+  },
+  {
+    "id": 4,
+    "thread": "contract",
+    "raw_email": "From: sara.ahmed@example.com\nTo: mark.lopez@example.com\nCc: priya.shah@example.com\nSubject: Vendor contract renewal\n\nMark,\n\nThe Northwind contract expires on June 30. Can we meet Thursday to discuss renewal terms? I have copied Priya since she owns the March order.\n\nSara Ahmed\nProcurement",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "sara.ahmed@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "PERSON", "value": "Mark" },
+      { "type": "PERSON", "value": "Priya" },
+      { "type": "PERSON", "value": "Sara Ahmed" }
+    ],
+    "not_pii": ["Northwind", "June 30", "Thursday"]
+  },
+  {
+    "id": 5,
+    "thread": "contract",
+    "raw_email": "From: priya.shah@example.com\nTo: sara.ahmed@example.com\nSubject: RE: Vendor contract renewal\n\nHi Sara,\n\nThursday at 2pm works. One issue: the last Northwind shipment (INV-19877) arrived 4 days late, so let's ask for a late-delivery penalty in the new contract.\n\nPri",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "sara.ahmed@example.com" },
+      { "type": "PERSON", "value": "Sara" },
+      { "type": "PERSON", "value": "Pri" }
+    ],
+    "not_pii": ["INV-19877", "Thursday at 2pm", "Northwind"]
+  },
+  {
+    "id": 6,
+    "thread": "march-order",
+    "raw_email": "From: mark.lopez@example.com\nTo: tom.becker@northwind.example.com\nSubject: Possible delay\n\nTom,\n\nWe just heard the March 12 delivery may slip. Please confirm the new date by end of day. My direct line is 408-555-0177.\n\nMark",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "tom.becker@northwind.example.com" },
+      { "type": "PERSON", "value": "Tom" },
+      { "type": "PHONE_NUMBER", "value": "408-555-0177" },
+      { "type": "PERSON", "value": "Mark" }
+    ],
+    "not_pii": ["March 12"]
+  },
+  {
+    "id": 7,
+    "thread": "march-order",
+    "raw_email": "From: tom.becker@northwind.example.com\nTo: mark.lopez@example.com\nCc: priya.shah@example.com\nSubject: RE: Possible delay\n\nMark, Priya,\n\nSorry for the confusion. A warehouse issue pushed delivery to March 14. This is still before your March 15 deadline. I will send tracking number TRK-55821-X tomorrow.\n\nTom",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "tom.becker@northwind.example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "PERSON", "value": "Mark" },
+      { "type": "PERSON", "value": "Priya" },
+      { "type": "PERSON", "value": "Tom" }
+    ],
+    "not_pii": ["March 14", "March 15", "TRK-55821-X"]
+  },
+  {
+    "id": 8,
+    "thread": "new-hire",
+    "raw_email": "From: grace.liu@example.com\nTo: priya.shah@example.com\nSubject: New team member\n\nHi Priya,\n\nPlease welcome Daniel Kim to the team on Monday, April 6. His work email is daniel.kim@example.com and his employee ID is EMP-30417.\n\nLunch is at 12:30 in Room 4B.\n\nGrace Liu\nHR",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "grace.liu@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "PERSON", "value": "Priya" },
+      { "type": "PERSON", "value": "Daniel Kim" },
+      { "type": "EMAIL_ADDRESS", "value": "daniel.kim@example.com" },
+      { "type": "EMPLOYEE_ID", "value": "EMP-30417" },
+      { "type": "PERSON", "value": "Grace Liu" }
+    ],
+    "not_pii": ["April 6", "12:30", "Room 4B"]
+  },
+  {
+    "id": 9,
+    "thread": "new-hire",
+    "raw_email": "From: grace.liu@example.com\nTo: dkim.personal@example.net\nSubject: Before your start date\n\nHi Daniel,\n\nBefore your start date, please send your home address and emergency contact to HR.\n\nGrace",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "grace.liu@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "dkim.personal@example.net" },
+      { "type": "PERSON", "value": "Daniel" },
+      { "type": "PERSON", "value": "Grace" }
+    ],
+    "not_pii": []
+  },
+  {
+    "id": 10,
+    "thread": "new-hire",
+    "raw_email": "From: dkim.personal@example.net\nTo: grace.liu@example.com\nSubject: RE: Before your start date\n\nHi Grace,\n\nMy home address is 742 Maple Avenue, Sunnyvale, CA 94086. Emergency contact: my sister, Hannah Kim, 650-555-0188.\n\nThanks,\nDaniel Kim",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "dkim.personal@example.net" },
+      { "type": "EMAIL_ADDRESS", "value": "grace.liu@example.com" },
+      { "type": "PERSON", "value": "Grace" },
+      { "type": "LOCATION", "value": "742 Maple Avenue, Sunnyvale, CA 94086" },
+      { "type": "PERSON", "value": "Hannah Kim" },
+      { "type": "PHONE_NUMBER", "value": "650-555-0188" },
+      { "type": "PERSON", "value": "Daniel Kim" }
+    ],
+    "not_pii": []
+  },
+  {
+    "id": 11,
+    "thread": "new-hire",
+    "raw_email": "From: daniel.kim@example.com\nTo: it-support@example.com\nSubject: Laptop not booting\n\nHello,\n\nMy laptop (asset tag LT-8812) will not start. Please reach me on my mobile, 650.555.0119. Employee ID EMP-30417.\n\nDaniel Kim",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "daniel.kim@example.com" },
+      { "type": "PHONE_NUMBER", "value": "650.555.0119" },
+      { "type": "EMPLOYEE_ID", "value": "EMP-30417" },
+      { "type": "PERSON", "value": "Daniel Kim" }
+    ],
+    "not_pii": ["it-support@example.com", "LT-8812"]
+  },
+  {
+    "id": 12,
+    "thread": "new-hire",
+    "raw_email": "From: it-support@example.com\nTo: daniel.kim@example.com\nSubject: RE: Laptop not booting\n\nHi Daniel,\n\nTicket IT-4410 is open. A technician, Raj Patel, will visit your desk at 3pm today.\n\nIT Support",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "daniel.kim@example.com" },
+      { "type": "PERSON", "value": "Daniel" },
+      { "type": "PERSON", "value": "Raj Patel" }
+    ],
+    "not_pii": ["it-support@example.com", "IT-4410", "3pm"]
+  },
+  {
+    "id": 13,
+    "thread": "new-hire",
+    "raw_email": "From: priya.shah@example.com\nTo: daniel.kim@example.com\nSubject: Welcome!\n\nHi Daniel,\n\nWelcome aboard! Your first task is to review the Northwind contract with Sara before Thursday. Ping me anytime at 408-555-0142.\n\nPriya",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "daniel.kim@example.com" },
+      { "type": "PERSON", "value": "Daniel" },
+      { "type": "PERSON", "value": "Sara" },
+      { "type": "PHONE_NUMBER", "value": "408-555-0142" },
+      { "type": "PERSON", "value": "Priya" }
+    ],
+    "not_pii": ["Northwind", "Thursday"]
+  },
+  {
+    "id": 14,
+    "thread": "office-move",
+    "raw_email": "From: elena.petrova@example.com\nTo: all-staff@example.com\nSubject: Office move on May 1\n\nHi all,\n\nOur office is moving from 100 Oak Street, San Jose, CA 95110 to 88 Cedar Lane, Santa Clara, CA 95054 on May 1.\n\nQuestions? Contact me at elena.petrova@example.com or 408-555-0166.\n\nElena Petrova\nFacilities",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "elena.petrova@example.com" },
+      { "type": "LOCATION", "value": "100 Oak Street, San Jose, CA 95110" },
+      { "type": "LOCATION", "value": "88 Cedar Lane, Santa Clara, CA 95054" },
+      { "type": "PHONE_NUMBER", "value": "408-555-0166" },
+      { "type": "PERSON", "value": "Elena Petrova" }
+    ],
+    "not_pii": ["all-staff@example.com", "May 1"]
+  },
+  {
+    "id": 15,
+    "thread": "office-move",
+    "raw_email": "From: mark.lopez@example.com\nTo: elena.petrova@example.com\nSubject: Parking after the move\n\nElena,\n\nCan my team keep our parking spots? I park in spot P-112.\n\nMark Lopez\n408-555-0177",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "elena.petrova@example.com" },
+      { "type": "PERSON", "value": "Elena" },
+      { "type": "PERSON", "value": "Mark Lopez" },
+      { "type": "PHONE_NUMBER", "value": "408-555-0177" }
+    ],
+    "not_pii": ["P-112"]
+  },
+  {
+    "id": 16,
+    "thread": "office-move",
+    "raw_email": "From: elena.petrova@example.com\nTo: mark.lopez@example.com\nSubject: RE: Parking after the move\n\nMark,\n\nYes, parking moves with you. New spots are assigned on April 28. Your new desk is 3-D-17.\n\nElena",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "elena.petrova@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "PERSON", "value": "Mark" },
+      { "type": "PERSON", "value": "Elena" }
+    ],
+    "not_pii": ["April 28", "3-D-17"]
+  },
+  {
+    "id": 17,
+    "thread": "office-move",
+    "raw_email": "From: sara.ahmed@example.com\nTo: elena.petrova@example.com\nSubject: Mail forwarding\n\nHi Elena,\n\nPlease have mail for me forwarded to my home during the move: 19 Birch Court, Cupertino, CA 95014.\n\nSara",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "sara.ahmed@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "elena.petrova@example.com" },
+      { "type": "PERSON", "value": "Elena" },
+      { "type": "LOCATION", "value": "19 Birch Court, Cupertino, CA 95014" },
+      { "type": "PERSON", "value": "Sara" }
+    ],
+    "not_pii": []
+  },
+  {
+    "id": 18,
+    "thread": "office-move",
+    "raw_email": "From: elena.petrova@example.com\nTo: all-staff@example.com\nSubject: Packing reminder\n\nReminder: packing boxes arrive on April 25. Label each box with your desk number, not your name.\n\nFacilities",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "elena.petrova@example.com" }
+    ],
+    "not_pii": ["all-staff@example.com", "April 25"]
+  },
+  {
+    "id": 19,
+    "thread": "refund",
+    "raw_email": "From: carlos.mendes@example.org\nTo: support@example.com\nSubject: Charged twice\n\nHello,\n\nI was charged twice for order ORD-77120. The card used was 4111 1111 1111 1111. Please refund the extra charge.\n\nCarlos Mendes\n(510) 555-0104",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "carlos.mendes@example.org" },
+      { "type": "CREDIT_CARD", "value": "4111 1111 1111 1111" },
+      { "type": "PERSON", "value": "Carlos Mendes" },
+      { "type": "PHONE_NUMBER", "value": "(510) 555-0104" }
+    ],
+    "not_pii": ["support@example.com", "ORD-77120"]
+  },
+  {
+    "id": 20,
+    "thread": "refund",
+    "raw_email": "From: aisha.rahman@example.com\nTo: carlos.mendes@example.org\nSubject: RE: Charged twice\n\nHi Carlos,\n\nThank you for reporting this. I can see the duplicate charge on order ORD-77120. A refund of $49.99 will be issued within 5 business days. Your case number is CASE-9031.\n\nAisha Rahman\nCustomer Support",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "aisha.rahman@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "carlos.mendes@example.org" },
+      { "type": "PERSON", "value": "Carlos" },
+      { "type": "PERSON", "value": "Aisha Rahman" }
+    ],
+    "not_pii": ["ORD-77120", "$49.99", "CASE-9031"]
+  },
+  {
+    "id": 21,
+    "thread": "refund",
+    "raw_email": "From: aisha.rahman@example.com\nTo: billing@example.com\nSubject: Refund request CASE-9031\n\nBilling team,\n\nPlease refund $49.99 to the customer on CASE-9031 (Carlos Mendes). Do not email the full card number; the last four digits are 1111.\n\nAisha",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "aisha.rahman@example.com" },
+      { "type": "PERSON", "value": "Carlos Mendes" },
+      { "type": "PERSON", "value": "Aisha" }
+    ],
+    "not_pii": ["billing@example.com", "$49.99", "CASE-9031", "1111"]
+  },
+  {
+    "id": 22,
+    "thread": "refund",
+    "raw_email": "From: carlos.mendes@example.org\nTo: aisha.rahman@example.com\nSubject: Still no refund\n\nAisha,\n\nIt has been 7 days and I still don't see the refund. Also, please update my shipping address to 55 Elm Street, Apt 3, Oakland, CA 94607.\n\nCarlos",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "carlos.mendes@example.org" },
+      { "type": "EMAIL_ADDRESS", "value": "aisha.rahman@example.com" },
+      { "type": "PERSON", "value": "Aisha" },
+      { "type": "LOCATION", "value": "55 Elm Street, Apt 3, Oakland, CA 94607" },
+      { "type": "PERSON", "value": "Carlos" }
+    ],
+    "not_pii": ["7 days"]
+  },
+  {
+    "id": 23,
+    "thread": "refund",
+    "raw_email": "From: aisha.rahman@example.com\nTo: carlos.mendes@example.org\nSubject: RE: Still no refund\n\nHi Carlos,\n\nSorry for the delay. The refund was sent on April 2 and should appear by April 9. I have updated your shipping address.\n\nAisha",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "aisha.rahman@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "carlos.mendes@example.org" },
+      { "type": "PERSON", "value": "Carlos" },
+      { "type": "PERSON", "value": "Aisha" }
+    ],
+    "not_pii": ["April 2", "April 9"]
+  },
+  {
+    "id": 24,
+    "thread": "refund",
+    "raw_email": "From: carlos.mendes@example.org\nTo: support@example.com\nSubject: Refund received\n\nThe refund arrived today. Thanks, Aisha!\n\nCarlos M.",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "carlos.mendes@example.org" },
+      { "type": "PERSON", "value": "Aisha" },
+      { "type": "PERSON", "value": "Carlos M." }
+    ],
+    "not_pii": ["support@example.com"]
+  },
+  {
+    "id": 25,
+    "thread": "edge-cases",
+    "note": "Name that is also a month; dates must NOT be hidden.",
+    "raw_email": "From: april.may@example.com\nTo: mark.lopez@example.com\nSubject: Northwind NDA\n\nHi Mark,\n\nApril May here from Legal. The NDA for Northwind must be signed by May 20.\n\nApril",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "april.may@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "PERSON", "value": "Mark" },
+      { "type": "PERSON", "value": "April May" },
+      { "type": "PERSON", "value": "April" }
+    ],
+    "not_pii": ["May 20", "Northwind"]
+  },
+  {
+    "id": 26,
+    "thread": "edge-cases",
+    "note": "Lowercase, informal names.",
+    "raw_email": "From: mark.lopez@example.com\nTo: priya.shah@example.com\nSubject: fyi\n\nfyi - tom from northwind called, said the invoice will be resent. talk to sara if u need the contract.\n\n-mark",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "mark.lopez@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "PERSON", "value": "tom" },
+      { "type": "PERSON", "value": "sara" },
+      { "type": "PERSON", "value": "-mark" }
+    ],
+    "not_pii": ["northwind"]
+  },
+  {
+    "id": 27,
+    "thread": "edge-cases",
+    "note": "No PII at all. Nothing should be hidden.",
+    "raw_email": "From: noreply@example.com\nTo: all-staff@example.com\nSubject: System maintenance\n\nThe expense system will be offline Saturday from 10pm to 2am. No action is needed.",
+    "expected_pii": [],
+    "not_pii": ["noreply@example.com", "all-staff@example.com", "Saturday", "10pm", "2am"]
+  },
+  {
+    "id": 28,
+    "thread": "edge-cases",
+    "note": "Same phone number written two ways; ideally both map to the same placeholder.",
+    "raw_email": "From: grace.liu@example.com\nTo: priya.shah@example.com\nSubject: Emergency contact check\n\nHi Priya,\n\nDaniel's emergency contact number on file is 650-555-0188, but he wrote it as (650) 555 0188 on the form. Which one is correct?\n\nGrace",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "grace.liu@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "PERSON", "value": "Priya" },
+      { "type": "PERSON", "value": "Daniel" },
+      { "type": "PHONE_NUMBER", "value": "650-555-0188" },
+      { "type": "PHONE_NUMBER", "value": "(650) 555 0188" },
+      { "type": "PERSON", "value": "Grace" }
+    ],
+    "not_pii": []
+  },
+  {
+    "id": 29,
+    "thread": "edge-cases",
+    "note": "Forwarded message with PII inside the forwarded header.",
+    "raw_email": "From: priya.shah@example.com\nTo: daniel.kim@example.com\nSubject: FW: Tracking\n\nDaniel, see below.\n\n---------- Forwarded message ----------\nFrom: Tom Becker <tom.becker@northwind.example.com>\nSubject: Tracking\n\nTracking number for INV-20391 is TRK-55821-X.\n\nPriya",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "priya.shah@example.com" },
+      { "type": "EMAIL_ADDRESS", "value": "daniel.kim@example.com" },
+      { "type": "PERSON", "value": "Daniel" },
+      { "type": "PERSON", "value": "Tom Becker" },
+      { "type": "EMAIL_ADDRESS", "value": "tom.becker@northwind.example.com" },
+      { "type": "PERSON", "value": "Priya" }
+    ],
+    "not_pii": ["INV-20391", "TRK-55821-X"]
+  },
+  {
+    "id": 30,
+    "thread": "edge-cases",
+    "note": "Username hidden inside a URL.",
+    "raw_email": "From: it-support@example.com\nTo: raj.patel@example.com\nSubject: Profile photo\n\nRaj,\n\nThe profile page https://intranet.example.com/users/daniel.kim needs a photo update. Employee ID EMP-30417.\n\nIT Support",
+    "expected_pii": [
+      { "type": "EMAIL_ADDRESS", "value": "raj.patel@example.com" },
+      { "type": "PERSON", "value": "Raj" },
+      { "type": "USERNAME", "value": "daniel.kim" },
+      { "type": "EMPLOYEE_ID", "value": "EMP-30417" }
+    ],
+    "not_pii": ["it-support@example.com", "intranet.example.com"]
+  }
+]

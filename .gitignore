@@ -1,0 +1,38 @@
+# .NET build output
+**/bin/
+**/obj/
+**/TestResults/
+.vs/
+*.user
+*.suo
+
+# Python virtual environments and generated files
+**/.venv/
+**/venv/
+**/__pycache__/
+*.py[cod]
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+**/appsettings.Local.json
+
+# Editor and operating-system files
+.DS_Store
+
+# IDE settings (may contain local paths)
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Certificates and private keys
+*.pfx
+*.pem
+*.key
+
+# Streamlit local secrets
+**/.streamlit/secrets.toml
+
+# Logs
+*.log

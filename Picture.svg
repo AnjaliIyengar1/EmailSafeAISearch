@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#37474f"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="540" fill="#ffffff"/>
+
+  <!-- User -->
+  <circle cx="70" cy="215" r="17" fill="#546e7a"/>
+  <path d="M42 268 Q42 238 70 238 Q98 238 98 268 Z" fill="#546e7a"/>
+  <text x="70" y="290" text-anchor="middle" font-size="15" font-weight="bold" fill="#263238">User</text>
+
+  <!-- Laptop zone -->
+  <rect x="130" y="30" width="710" height="490" rx="18" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="152" y="62" font-size="17" font-weight="bold" fill="#1b5e20">Your laptop</text>
+  <text x="152" y="82" font-size="13" fill="#2e7d32">Real data stays here</text>
+
+  <!-- UI -->
+  <rect x="160" y="165" width="170" height="130" rx="10" fill="#ffffff" stroke="#546e7a" stroke-width="1.5"/>
+  <rect x="215" y="180" width="60" height="38" rx="3" fill="#cfd8dc" stroke="#37474f" stroke-width="1.5"/>
+  <path d="M205 222 H285 L278 231 H212 Z" fill="#90a4ae" stroke="#37474f" stroke-width="1.5"/>
+  <text x="245" y="258" text-anchor="middle" font-size="15" font-weight="bold" fill="#263238">Streamlit UI</text>
+  <text x="245" y="278" text-anchor="middle" font-size="12" fill="#546e7a">localhost:8501</text>
+
+  <!-- Backend -->
+  <rect x="380" y="100" width="440" height="400" rx="14" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="400" y="128" font-size="16" font-weight="bold" fill="#1b5e20">Backend</text>
+
+  <!-- API -->
+  <rect x="420" y="160" width="200" height="120" rx="10" fill="#ede7f6" stroke="#5e35b1" stroke-width="1.5"/>
+  <text x="520" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#311b92">.NET API</text>
+  <text x="520" y="222" text-anchor="middle" font-size="12" fill="#4527a0">hide, search, ask, restore</text>
+  <text x="520" y="244" text-anchor="middle" font-size="12" fill="#4527a0">localhost:5298</text>
+
+  <!-- Emails -->
+  <rect x="410" y="360" width="170" height="115" rx="10" fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+  <rect x="470" y="375" width="50" height="32" rx="2" fill="#ffffff" stroke="#f9a825" stroke-width="1.5"/>
+  <path d="M470 375 L495 394 L520 375" fill="none" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="495" y="434" text-anchor="middle" font-size="15" font-weight="bold" fill="#5d4037">Emails</text>
+  <text x="495" y="454" text-anchor="middle" font-size="12" fill="#6d4c41">data/emails.json</text>
+
+  <!-- Docker + Presidio -->
+  <rect x="620" y="335" width="180" height="145" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="710" y="358" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d47a1">Docker</text>
+  <rect x="640" y="370" width="140" height="95" rx="8" fill="#ffffff" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="710" y="400" text-anchor="middle" font-size="15" font-weight="bold" fill="#0d47a1">Presidio</text>
+  <text x="710" y="420" text-anchor="middle" font-size="12" fill="#1565c0">finds PII</text>
+  <text x="710" y="440" text-anchor="middle" font-size="12" fill="#1565c0">localhost:5002</text>
+
+  <!-- Cloud -->
+  <rect x="880" y="110" width="290" height="330" rx="24" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+  <path d="M1000 150 a14 14 0 0 1 26 -6 a18 18 0 0 1 32 8 a12 12 0 0 1 2 24 h-58 a13 13 0 0 1 -2 -26 z" fill="#ffffff" stroke="#e65100" stroke-width="1.5"/>
+  <text x="1025" y="205" text-anchor="middle" font-size="17" font-weight="bold" fill="#bf360c">Google Cloud</text>
+  <text x="1025" y="225" text-anchor="middle" font-size="13" fill="#e65100">Sees hidden text only</text>
+
+  <rect x="910" y="245" width="230" height="80" rx="10" fill="#ffffff" stroke="#e65100" stroke-width="1.5"/>
+  <text x="1025" y="279" text-anchor="middle" font-size="15" font-weight="bold" fill="#bf360c">Gemini Embeddings</text>
+  <text x="1025" y="300" text-anchor="middle" font-size="12" fill="#e65100">finds related emails</text>
+
+  <rect x="910" y="345" width="230" height="80" rx="10" fill="#ffffff" stroke="#e65100" stroke-width="1.5"/>
+  <text x="1025" y="379" text-anchor="middle" font-size="15" font-weight="bold" fill="#bf360c">Gemini</text>
+  <text x="1025" y="400" text-anchor="middle" font-size="12" fill="#e65100">writes the answer</text>
+
+  <!-- Arrows -->
+  <g stroke="#37474f" stroke-width="1.6" fill="none">
+    <line x1="102" y1="235" x2="156" y2="235" marker-end="url(#arrow)"/>
+    <line x1="332" y1="205" x2="416" y2="205" marker-end="url(#arrow)"/>
+    <line x1="416" y1="245" x2="334" y2="245" marker-end="url(#arrow)"/>
+    <line x1="495" y1="356" x2="495" y2="284" marker-end="url(#arrow)"/>
+    <line x1="590" y1="284" x2="672" y2="366" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="624" y1="190" x2="906" y2="275" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="624" y1="240" x2="906" y2="380" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Arrow labels -->
+  <g font-size="12" fill="#37474f">
+    <text x="129" y="226" text-anchor="middle">question</text>
+    <text x="374" y="196" text-anchor="middle">ask</text>
+    <text x="374" y="262" text-anchor="middle">answer</text>
+    <text x="503" y="325">loaded once</text>
+    <text x="642" y="312">real text /</text>
+    <text x="642" y="327">PII positions</text>
+    <text x="700" y="200" transform="rotate(16.8 700 200)">hidden text / vectors</text>
+    <text x="706" y="262" transform="rotate(26.4 706 262)">hidden prompt / answer</text>
+  </g>
+</svg>

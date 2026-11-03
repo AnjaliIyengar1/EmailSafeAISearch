@@ -1,0 +1,20 @@
+@EmailSafeAISearch_HostAddress = http://localhost:5298
+
+GET {{EmailSafeAISearch_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+POST {{EmailSafeAISearch_HostAddress}}/api/pii/detect
+Content-Type: application/json
+
+{ "text": "Hi Mark, call Priya at 408-555-0142" }
+
+###
+
+POST {{EmailSafeAISearch_HostAddress}}/api/ask
+Content-Type: application/json
+
+{ "question": "When will order INV-20391 arrive?" }
+
+###
