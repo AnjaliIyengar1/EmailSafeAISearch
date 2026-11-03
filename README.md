@@ -16,6 +16,18 @@ Ask questions about a set of emails without the AI ever seeing private data:
 ```
 Actual email: "Call Priya at 408-555-0142"  ->  AI sees: "Call <PERSON_2> at <PHONE_NUMBER_1>"  ->  user sees: "Call Priya at 408-555-0142"
 ```
+## The Pipeline
+
+```
+question -> redact -> embed -> find emails -> build prompt -> Gemini -> restore -> answer
+```
+
+| Step | Emails | Each question |
+|---|---|---|
+| Redact PII (Presidio) | Once per app run | Every time |
+| Embed (Gemini Embeddings) | Once per app run, kept in memory | Every time |
+| Find closest emails (cosine similarity, top 5, in .NET) | - | Every time |
+| Build prompt, ask Gemini, restore real values | - | Every time |
 
 ## Architecture
 
